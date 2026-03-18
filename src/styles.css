@@ -8,7 +8,19 @@
   --accent: #ffffff;
   --accent-gray: #525252;
   --splatter: rgba(82, 82, 82, 0.4);
-  --splash: rgba(115, 115, 115, 0.55);
+  --ambient-left: rgba(255, 255, 255, 0.055);
+  --ambient-right: rgba(255, 255, 255, 0.024);
+  --splash-tint: rgba(255, 255, 255, 0.18);
+  --splash-left-visibility: 0.65;
+  --splash-right-visibility: 0.12;
+  --splash-left-shift-x: 0px;
+  --splash-left-shift-y: 0px;
+  --splash-right-shift-x: 0px;
+  --splash-right-shift-y: 0px;
+  --splash-left-rotate: 0deg;
+  --splash-right-rotate: 0deg;
+  --splash-left-scale: 1;
+  --splash-right-scale: 1;
   --border: #262626;
   --link: #ffffff;
   --link-hover: #d4d4d4;
@@ -22,7 +34,11 @@
   --accent: #0a0a0a;
   --accent-gray: #a3a3a3;
   --splatter: rgba(163, 163, 163, 0.3);
-  --splash: rgba(100, 100, 100, 0.45);
+  --ambient-left: rgba(0, 0, 0, 0.05);
+  --ambient-right: rgba(0, 0, 0, 0.02);
+  --splash-tint: rgba(0, 0, 0, 0.14);
+  --splash-left-visibility: 0.52;
+  --splash-right-visibility: 0.1;
   --border: #e5e5e5;
   --link: #0a0a0a;
   --link-hover: #404040;
@@ -43,39 +59,61 @@ html {
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
+  background-image:
+    radial-gradient(circle at 20% 14%, var(--ambient-left) 0%, transparent 28%),
+    radial-gradient(circle at 85% 20%, var(--ambient-right) 0%, transparent 20%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Gradient background - softer, multi-point */
+/* Left splash */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image:
-    radial-gradient(ellipse 100% 60% at 15% 10%, var(--splatter) 0%, transparent 45%),
-    radial-gradient(ellipse 80% 80% at 85% 15%, var(--splatter) 0%, transparent 40%),
-    radial-gradient(ellipse 60% 50% at 10% 85%, var(--splatter) 0%, transparent 50%);
+  background: var(--splash-tint);
+  mask-image: url('/asset/candidates/onlygfx-brush-splatter.png');
+  mask-size: min(720px, 58vw) auto;
+  mask-position: left -8rem bottom -3rem;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url('/asset/candidates/onlygfx-brush-splatter.png');
+  -webkit-mask-size: min(720px, 58vw) auto;
+  -webkit-mask-position: left -8rem bottom -3rem;
+  -webkit-mask-repeat: no-repeat;
+  transform: translate3d(var(--splash-left-shift-x), var(--splash-left-shift-y), 0)
+    rotate(var(--splash-left-rotate))
+    scale(var(--splash-left-scale));
+  transform-origin: 12% 84%;
+  opacity: var(--splash-left-visibility);
+  will-change: transform, opacity;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Water splash layer - matches HAM.NET logo, theme-aware */
+/* Right splash */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: var(--splash);
-  mask-image: url('/asset/water-splash-mask.svg');
-  mask-size: cover;
-  mask-position: center;
+  background: var(--splash-tint);
+  mask-image: url('/asset/candidates/onlygfx-brush-splatter.png');
+  mask-size: min(860px, 74vw) auto;
+  mask-position: right -4rem top -2.5rem;
   mask-repeat: no-repeat;
-  -webkit-mask-image: url('/asset/water-splash-mask.svg');
-  -webkit-mask-size: cover;
-  -webkit-mask-position: center;
+  -webkit-mask-image: url('/asset/candidates/onlygfx-brush-splatter.png');
+  -webkit-mask-size: min(860px, 74vw) auto;
+  -webkit-mask-position: right -4rem top -2.5rem;
   -webkit-mask-repeat: no-repeat;
+  transform: translate3d(var(--splash-right-shift-x), var(--splash-right-shift-y), 0)
+    rotate(var(--splash-right-rotate))
+    scale(var(--splash-right-scale));
+  transform-origin: 86% 84%;
+  opacity: var(--splash-right-visibility);
+  will-change: transform, opacity;
   pointer-events: none;
   z-index: 0;
 }
@@ -558,6 +596,20 @@ body::after {
 
 /* Responsive */
 @media (max-width: 768px) {
+  body::before {
+    mask-size: min(520px, 92vw) auto;
+    mask-position: left -6rem bottom -3rem;
+    -webkit-mask-size: min(520px, 92vw) auto;
+    -webkit-mask-position: left -6rem bottom -3rem;
+  }
+
+  body::after {
+    mask-size: min(620px, 120vw) auto;
+    mask-position: right -7rem top -3rem;
+    -webkit-mask-size: min(620px, 120vw) auto;
+    -webkit-mask-position: right -7rem top -3rem;
+  }
+
   .nav-links {
     display: none;
   }
