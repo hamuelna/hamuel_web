@@ -8,6 +8,7 @@
   --accent: #ffffff;
   --accent-gray: #525252;
   --splatter: rgba(82, 82, 82, 0.4);
+  --splash: rgba(115, 115, 115, 0.55);
   --border: #262626;
   --link: #ffffff;
   --link-hover: #d4d4d4;
@@ -21,6 +22,7 @@
   --accent: #0a0a0a;
   --accent-gray: #a3a3a3;
   --splatter: rgba(163, 163, 163, 0.3);
+  --splash: rgba(100, 100, 100, 0.45);
   --border: #e5e5e5;
   --link: #0a0a0a;
   --link-hover: #404040;
@@ -47,12 +49,33 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Splatter texture - subtle background */
+/* Gradient background - softer, multi-point */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(ellipse 80% 50% at 20% 20%, var(--splatter) 0%, transparent 50%);
+  background-image:
+    radial-gradient(ellipse 100% 60% at 15% 10%, var(--splatter) 0%, transparent 45%),
+    radial-gradient(ellipse 80% 80% at 85% 15%, var(--splatter) 0%, transparent 40%),
+    radial-gradient(ellipse 60% 50% at 10% 85%, var(--splatter) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Water splash layer - matches HAM.NET logo, theme-aware */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--splash);
+  mask-image: url('/asset/water-splash-mask.svg');
+  mask-size: cover;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url('/asset/water-splash-mask.svg');
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
   pointer-events: none;
   z-index: 0;
 }

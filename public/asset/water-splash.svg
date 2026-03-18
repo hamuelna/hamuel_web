@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <defs>
+    <radialGradient id="splashGrad1" cx="30%" cy="20%" r="50%">
+      <stop offset="0%" style="stop-color:currentColor;stop-opacity:0.2"/>
+      <stop offset="70%" style="stop-color:currentColor;stop-opacity:0.06"/>
+      <stop offset="100%" style="stop-color:currentColor;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="splashGrad2" cx="70%" cy="30%" r="45%">
+      <stop offset="0%" style="stop-color:currentColor;stop-opacity:0.15"/>
+      <stop offset="70%" style="stop-color:currentColor;stop-opacity:0.04"/>
+      <stop offset="100%" style="stop-color:currentColor;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="splashGrad3" cx="20%" cy="70%" r="40%">
+      <stop offset="0%" style="stop-color:currentColor;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:currentColor;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="splashGrad4" cx="80%" cy="75%" r="35%">
+      <stop offset="0%" style="stop-color:currentColor;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:currentColor;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <!-- Organic water splash blobs - fluid, irregular shapes -->
+  <path fill="url(#splashGrad1)" d="M0 0 Q200 80 180 200 Q160 280 80 220 Q20 180 0 120 Z"/>
+  <path fill="url(#splashGrad1)" d="M120 0 Q280 40 320 120 Q350 180 280 200 Q200 220 120 100 Z"/>
+  <path fill="url(#splashGrad2)" d="M700 0 Q900 60 950 150 Q1000 220 880 180 Q800 150 720 80 Z"/>
+  <path fill="url(#splashGrad2)" d="M850 50 Q1050 100 1100 200 Q1120 280 1000 250 Q920 220 860 120 Z"/>
+  <path fill="url(#splashGrad3)" d="M0 500 Q100 420 200 480 Q300 550 150 620 Q50 650 0 580 Z"/>
+  <path fill="url(#splashGrad3)" d="M80 550 Q220 500 280 580 Q320 640 200 700 Q100 720 40 650 Z"/>
+  <path fill="url(#splashGrad4)" d="M900 550 Q1050 480 1150 560 Q1200 620 1080 680 Q980 720 920 620 Z"/>
+  <path fill="url(#splashGrad4)" d="M1000 600 Q1120 550 1180 640 Q1200 700 1100 750 Q1020 780 960 700 Z"/>
+</svg>
